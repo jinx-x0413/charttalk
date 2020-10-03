@@ -1,0 +1,412 @@
+<html>
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" /> 
+        <link rel="stylesheet" href="style.css" />
+        <script
+            class="jsbin"
+            src="https://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"
+        ></script>
+        
+        
+    </head>
+    <body>
+        <div class="webpage">
+            <a  href="https://charttalk.imweb.me/">찰떡(ChartTalk) : 전문가와 인생헤어 찾기</a> <a href="https://instagram.com/charttalk">insta: @charttalk</a><br>
+        </div>
+        <div class="title"> 
+         <a class="home" href="index.html">   Ask-Chart </a>
+            <a href="reply.html">헤어 디자이너입니다 (답변하러 가기)</a>
+            <a class="cs_openkakao" href="https://open.kakao.com/o/gbWFvTxc">feedback (오픈채팅)</a>
+        </div>
+        
+        
+        <form method="get" action="result.html" accept-charset="UTF-8" enctype="multipart/form-data">
+            <div class="form1" id="form1">
+                <h2 width="600">
+                    STEP 1. 개인적 특징
+                </h2>
+
+                <div class="headshape" id="headshape">
+                    <fieldset style=" float:left; width:600;">
+                        <legend><h4>두상</h4></legend>
+                        <span>" 슬라이드 바를 조절하여 본인의 특성을 입력해 주세요! " <br>
+                            스타일을 제안할 수 있도록 대략적인 유형을 알 수 있으면 충분해요!<br><br></span>
+                        <img id="profile_img" src="./img/profile/1111.jpg" width="200" height="200" style="float:left;">
+                        <div style="float:left; width:12%; margin-left:1%;">
+                            <br /><label class="headshape_forehead_label" > 이마넓이: </label>
+                            <br /><br /><label class="headshape_hairline_label"> 헤어라인: </label>
+                             <br /><br /><label class="headshape_top_label"> 두상각도: </label>
+                            <br /><br /><label class="headshape_side_label"> 옆 통 수:  </label>
+                             <br /><br /><label class="headshape_back_label"> 뒤 통 수:  </label>
+                        </div>
+                        
+                        <img id="forehead_range_val" src="./img/headshape/forehead_range1.jpg" width="40" height="40">
+                        좁음<input
+                            type="range"
+                            min="0"
+                            max="2"
+                            step="1"
+                            value="1"
+                           id="headshape_forehead_range"
+                            name="headshape_forehead_range"
+                            onchange="SetValue(this)"
+                        />넓음
+
+                        
+                       <br /><img id="hairline_range_val" src="./img/headshape/hairline_range1.jpg" width="40" height="40">
+                        둥근<input
+                            type="range"
+                            min="0"
+                            max="2"
+                            step="1"
+                            value="1"
+                            id="headshape_hairline_range"
+                            name="headshape_hairline_range"
+                            onchange="SetValue(this)"
+                        />M자
+
+                       
+                        <br /><img id="top_range_val" src="./img/headshape/top_range1.jpg" width="40" height="40">
+                        완만<input
+                            type="range"
+                            min="0"
+                            max="2"
+                            step="1"
+                            value="1"
+                            id="headshape_top_range"
+                            name="headshape_top_range"
+                            onchange="SetValue(this)"
+                        />콘헤드
+ 
+                        
+                       <br /> <img id="side_range_val" src="./img/headshape/side_range1.jpg" width="40" height="40">
+                        좁음<input
+                            type="range"
+                            min="0"
+                            max="2"
+                            step="1"
+                            value="1"
+                            id="headshape_side_range"
+                            name="headshape_side_range"
+                           onchange="SetValue(this)"
+                        />짱구
+
+                       
+                        <br /><img id="back_range_val" src="./img/headshape/back_range1.jpg" width="40" height="40">
+                        절벽<input
+                            type="range"
+                            min="0"
+                            max="2"
+                            step="1"
+                            value="1"
+                            id="headshape_back_range"
+                            name="headshape_back_range"
+                           onchange="SetValue(this)"
+                        />짱구
+                    </fieldset>
+                </div>
+
+                <div class="hairamount" id="hairamount">
+                    <fieldset style="float:left">
+                        <legend><h4>모량</h4></legend>
+                        <div style="width:43%; float:left; margin-right:2%; margin-top:4%;"> 머리 숱을 표시해주세요 !
+                        <br>
+                        <span style="width:50%; ">(적음   -   보통   -   많음)</span></div>
+                        
+                            <img id = "hairamount_range_val" src="./img/hairamount/0.png" width="50" height="50">
+                        적음<input
+                            type="range"
+                            min="0"
+                            max="2"
+                            step="1"
+                            value="0"
+                            name="hairamount_range"
+                            onchange="setvalue(this)"
+                               
+                        />많음
+                        
+                    </fieldset>
+                </div>
+
+                <div class="hairtype" id="hairtype">
+                    <fieldset >
+                        
+                        <legend><h4>모질</h4></legend>
+                        <div style="width:43%; float:left; margin-right:2%; margin-top:4%;"> 모발의 성질을 표시해주세요 !<br>
+                        <span style="width:50%; ">(직모   -   반곱슬   -   곱슬)</span></div>
+                        <img id = "hairtype_range_val" src="./img/hairtype/0.png" width="50" height="50">
+                        직모<input
+                            type="range"
+                            min="0"
+                            max="2"
+                            step="1"
+                            value="0"
+                            name="hairtype_range"
+                            onchange="setvalue(this)"
+                        />
+                        곱슬
+                    </fieldset>
+                </div>
+
+                <div class="hairthickness" id="hairthickness">
+                    <fieldset >
+                        <legend><h4>모발굵기</h4></legend>
+                        <div style="width:44%; float:left; margin-right:0.5%; margin-top:4%;"> 모발의 두께를 표시해주세요 !<br>
+                        <span style="width:50%; ">(극세사 - 얇음 - 보통 - 굵음 - 밧줄)</span></div>
+                        <img id = "hairthickness_range_val" src="./img/hairthickness/0.png" width="50" height="50">
+                        극세사<input
+                            type="range"
+                            min="0"
+                            max="4"
+                            step="1"
+                            value="0"
+                            name="hairthickness_range"
+                            onchange="setvalue(this)"
+                        />
+                        밧줄
+                    </fieldset>
+                </div>
+                <br />
+
+                <button class="page_button" type="button" onclick="page2()">
+                    NEXT >
+                </button>
+            </div>
+            <div class="form2" id="form2">
+                <h2 width="600">
+                    STEP 2. 모발상태
+                </h2>
+
+                <div class="procedure" id="procedure">
+                    <fieldset class="procedure_field">
+                        <legend><h4>최근 3년간 시술내역</h4></legend>
+                        " 최근 3년 이내에 받았던 시술을 선택하고 시술 횟수를 입력해주세요! "<br />
+                        (* 중복 시술의 경우 '총 횟수'를 입력해주세요.)<br /><br />
+                        <button type="button" id="procedure_perm_button" onclick="add_procedure(this, '#일반펌 : ')">
+                            #일반펌
+                        </button>
+
+                        <button
+                            type="button"
+                            id="procedure_heatedperm_button"
+                            onclick="add_procedure(this, '#열펌 : ')">
+                            #열펌
+                        </button>
+                        <button type="button" id="procedure_digitalperm_button" onclick="add_procedure(this, '#디지털펌 : ')">
+                            #디지털펌
+                        </button>
+                        <button type="button" id="procedure_downperm_button" onclick="add_procedure(this, '#다운펌 : ')">
+                            #다운펌
+                        </button>
+                        <button type="button" id="procedure_magicperm_button" onclick="add_procedure(this, '#매직 : ')">
+                            #매직
+                        </button>
+                        <button type="button" id="procedure_dying_button" onclick="add_procedure(this, '#염색 : ')">
+                            #염색
+                        </button>
+                        <button type="button" id="procedure_bleach_button" onclick="add_procedure(this, '#탈색 : ')">
+                            #탈색
+                        </button>
+                    </fieldset>
+                </div>
+
+
+                <div class="haircare" id="haircare">
+                    <fieldset >
+                        <legend><h4>관리습관</h4></legend>
+                        <label class="haircare_countwash_label">
+                            하루 동안 몇 번 머리를 감나요?
+                        </label>
+                        <input type="number" name="haircare_countwash_number" />
+
+                       <br /> <br /><label class="haircare_washtime_label"> 언제 머리를 감나요? </label
+                        ><br />
+                        <div class="checks">
+                        <input
+                            type="checkbox"
+                               id="washtime_morning"
+                            value="morning"
+                            name="haircare_washtime_check"
+                        /><label for="washtime_morning">아침</label>
+                        
+                        <input type="checkbox" id="washtime_afternoon" value="afternoon" name="haircare_washtime_check" />
+                        <label for="washtime_afternoon">오후</label>
+
+                        <input type="checkbox" id="washtime_night" value="night" name="haircare_washtime_check" />
+                        <label for="washtime_night">저녁</label>
+
+                        <input type="checkbox" id="washtime_dawn" value="dawn" name="haircare_washtime_check" />
+                        <label for="washtime_dawn">새벽</label>
+                            
+                            </div>
+
+                        <br /><br /><label class="haircare_product_label"> 사용하는 헤어 관리제품 </label
+                        ><br />
+                        <div class="checks">
+                            
+                        <input type="checkbox" id="product_rinse" value="rinse" name="haircare_product_check" />
+                        <label for="product_rinse">린스</label>
+
+                        <input
+                            type="checkbox"
+                               id="product_treatment"
+                            value="treatment"
+                            name="haircare_product_check"
+                        />
+                       <label for="product_treatment">트리트먼트</label>
+                            
+                        <input
+                            type="checkbox"
+                               id="product_essence"
+                            value="essence"
+                            name="haircare_product_check"
+                        />
+                        <label for="product_essence">에센스</label>
+                            
+                        <input
+                            type="checkbox"
+                               id="product_hairoil"
+                            value="hairoil"
+                            name="haircare_product_check"
+                        />
+                        <label for="product_hairoil">헤어오일</label>
+                            
+                        <input
+                            type="checkbox"
+                               id="product_hairpack"
+                            value="hairpack"
+                            name="haircare_product_check"
+                        />
+                        <label for="product_hairpack">헤어팩</label>
+
+                        <br /><br /><label class="haircare_tool_label"> 사용하는 헤어 스타일링 기구 </label
+                        ><br />
+                            <div class="checks">
+                                
+                        <input type="checkbox" id="product_dryer" value="dryer" name="haircare_tool_check" />
+                        <label for="product_dryer">헤어 드라이어</label>
+                                
+                        <input type="checkbox" id="product_iron" value="iron" name="haircare_tool_check" />
+                        <label for="product_iron">고데기</label>
+                                </div>
+                            </div>
+                    </fieldset>
+
+                    <br />
+                    <button type="button" class="back_button" onclick="back_page1()"> Back </button>
+                    <input type="submit" class="submit" value="NEXT >" />
+                      
+                  
+                </div>
+            </div>
+
+            
+        </form>
+
+        <div class="ad-banner" >
+            <ins class="kakao_ad_area" style="display:none;" 
+                data-ad-unit    = "DAN-rhugxiyqrxb6" 
+                data-ad-width   = "728" 
+                data-ad-height  = "90"></ins> 
+        <script type="text/javascript" src="//t1.daumcdn.net/kas/static/ba.min.js" async></script>    
+        </div>
+        
+        
+        <footer>
+            https://charttalk.imweb.me/
+            <br>
+            insta : @charttalk
+            <br>
+            kakao : @charttalk
+            <br><br>
+            ⓒ 찰떡 All rights reserved.
+        </footer>
+        
+        <script>
+            /////////////////////////////////// page 1//////////////////////////////////////
+            
+            $('.form2').hide();
+            $('.button2').hide();
+            
+            
+
+            
+            //두상 사진변경
+            function SetValue(e){
+                //슬라이더 사진 변경
+                var value_display = e.name.split('headshape_')[1] + '_val'                
+                var img = document.getElementById(value_display)
+                img.src = './img/headshape/' + e.name.split('headshape_')[1] + e.value + '.jpg';   
+                
+                //종합사진 변경
+                var profile_img = document.getElementById('profile_img')
+            var profile1 = document.getElementById('headshape_forehead_range').value
+            var profile2 = document.getElementById('headshape_hairline_range').value
+            var profile3 = document.getElementById('headshape_top_range').value
+            var profile4 = document.getElementById('headshape_back_range').value
+            profile_img.src = './img/profile/' + profile1 + profile2 + profile3 + profile4 + '.jpg'
+            }
+            
+            //모량,모질,굵기 사진변경
+            function setvalue(e){
+                var value_display = e.name + '_val'
+                var img = document.getElementById(value_display)
+                img.src = './img/' + e.name.split('_range')[0] + '/' + e.value + '.png'
+            }
+
+            function page2() {
+                $('.form1').hide();
+                $('.button1').hide();
+                $('.form2').show();
+                $('.button2').show();
+            }
+
+            
+            /////////////////////////////////// page 2//////////////////////////////////////
+            
+            // 시술
+            
+            function add_procedure(e,text){
+                //레이블
+                var tail = e.id.split('_button')[0];
+                var procedure_label = document.createTextNode(text);
+                procedure_label.id = tail+'_label';
+                //인풋
+                var procedure_input = document.createElement('input')
+                procedure_input.type = 'number';
+                procedure_input.name = tail + '_number';
+                //p tag = 레이블 + 인풋 + 실행취소 버튼
+                var p = document.createElement('p');
+                p.id = tail+'_tag'
+                $('.procedure_field').append(p);
+                $('#'+tail+'_tag').append(procedure_label);
+                $('#'+tail+'_tag').append(procedure_input);
+                $('#' + tail + '_button').hide();
+                //실행취소버튼
+                var return_button = document.createElement('button');
+                return_button.type="button";
+                return_button.id= tail + "_return";
+                return_button.innerHTML = '&nbsp x &nbsp'
+                return_button.onclick = function(){
+                    $('#'+tail+'_tag').remove();                    
+                    $('#'+tail+'_return').hide();
+                    $('#' + tail + '_button').show();
+                }
+                $('#'+tail+'_tag').append(return_button);
+            }
+            
+            
+        
+            function back_page1(){
+                $('.form2').hide();
+                $('.button2').hide();
+                $('.form1').show();
+                $('.button1').show();
+            }
+            
+        
+
+            
+        </script>
+    </body>
+</html>

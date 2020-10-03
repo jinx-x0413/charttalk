@@ -1,0 +1,906 @@
+<html>
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" /> 
+        <link rel="stylesheet" href="style.css" />
+        <script
+            class="jsbin"
+            src="https://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"
+        ></script>
+        <script src="html2canvas.min.js">
+        </script>
+        
+        
+    </head>
+    
+    <body>
+        
+        <div class="webpage">
+            <a  href="https://charttalk.imweb.me/">찰떡(ChartTalk) : 전문가와 인생헤어 찾기</a> <a href="https://instagram.com/charttalk">insta: @charttalk</a><br>
+        </div>
+      <div class="title" id="title">
+         <a class="home" href="index.html">   Ask-Chart </a>
+          <a href="reply.html">헤어 디자이너입니다 (답변하러 가기)</a>
+           <a class="cs_openkakao" href="https://open.kakao.com/o/gbWFvTxc">feedback (오픈채팅)</a>
+        </div>
+               
+        
+        <form action="">
+        
+        <div class="form3" id="form3">
+                <h2 width="600;">
+                    STEP 3. 원하는 스타일
+                </h2>
+                
+                <div class="BAimg" id="BAimg">
+                    <fieldset style="float:left">
+                        <legend><h4>Before / After</h4></legend>
+                        현재 머리 사진(Before)과 원하는 머리의 사진(After)을 첨부해주세요! <br/>
+                        (* 전체 사진이 아니어도 좋습니다.)<br>
+                        <fieldset class="before_wrap" >
+                            <legend>Before</legend>
+                            <div class="before_upload">
+                                <input type="file" id="BAimg_before"  onchange="readBefore(this)" accept="image/*">
+                            </div>
+                            <div class="before_content" >
+                                <img class="before_img" id="before_img" src="" width="200" height="200" >
+                                <button class="before_button" style="width:200" type="button" onclick="removeBefore()">다른 before 사진 업로드</button>
+                            </div>    
+                        </fieldset>
+                        
+                        <fieldset class="after_wrap" > 
+                            <legend>After</legend>
+                            <div class="after_upload">
+                                <input type="file" id="BAimg_after" name="BAimg_after" onchange="readAfter(this)" accept="image/*">
+                            </div>
+                            <div class="after_content">
+                                <img class="after_img" id="after_img" src="" width="200" height="200">
+                                <button class="after_button" style="width:200" type="button" onclick="removeAfter()" >다른 after 사진 업로드 </button>
+                            </div>    
+                        </fieldset>
+                        <div>
+                        
+                        <input type="text" id="BAimg_text" placeholder="사진 속의 특정 부분 or 전체적인 느낌" style="width:95%;"><br>
+                            현재 머리와 비교하여 특히 After 사진의 어떤 점을 원하는지 알려주세요! <br>
+                        (* 원하는 부분에 주목할 수 있도록 알려주세요 !)
+                            </div>
+                    </fieldset>
+                </div>
+                
+                <div class="mind_q" id="mind_q" >
+                    <fieldset class="mind_field" style="width:600">
+                        <legend><h4>심리적인 동기</h4></legend>
+                        " 아래 해시태그 중 이 스타일을 원하는 <span style="color:dodgerblue">#심리적 이유</span>를 선택하고 <br> 자세한 내용을 입력해주세요 ! "<br>
+                        (* 구체적으로 원하는 스타일이 없다면 추천 스타일의 방향을 알려주세요 !)<br><br>
+                        <div>
+                            <button type="button" id="mind_recommend_button" onclick="add_mind(this, '주변의 추천', '추천했던 이유?')">
+                            #주변의 추천
+                        </button>
+                        <button type="button" id="mind_fit_button" onclick="add_mind(this, '잘 어울림', '특히 잘 어울리는 이유?')">
+                            #잘 어울림
+                        </button>
+                        <button type="button" id="mind_attempt_button" onclick="add_mind(this, '새로운 시도', '새로운 시도를 할 만한 상황?')">
+                            #새로운 시도
+                        </button>
+                        <button type="button" id="mind_image_button" onclick="add_mind(this, '이미지 변신', '원하는 이미지?')">
+                            #이미지 변신
+                        </button>
+                        <button type="button" id="mind_pretty_button" onclick="add_mind(this, '예쁜/멋진 스타일', '마음에 쏙 드는 부분?')">
+                            #예쁜/멋진 스타일
+                        </button>    
+                            <button type="button" id="mind_complex_button" onclick="add_mind(this, '컴플렉스 커버', '어떤 컴플렉스? ㅠㅠ')">
+                            #컴플렉스 커버
+                        </button>
+                        <button type="button" id="mind_care_button" onclick="add_mind(this, '간편한 관리', '원하는 관리 방법/방향?')">
+                            #간편한 관리
+                        </button>
+                        <button type="button" id="mind_styling_button" onclick="add_mind(this, '간편한 스타일링', '원하는 스타일링 방법/방향?')">
+                            #간편한 스타일링
+                        </button>
+                        
+                        <button type="button" id="mind_identity_button" onclick="add_mind(this, '나를 잘 표현', '나의 개성은?')">
+                            #나를 잘 표현
+                        </button>
+                        <button type="button" id="mind_job_button" onclick="add_mind(this, '직업과 관련', '직업이 미치는 영향?')">
+                            #직업과 관련
+                        </button>
+                        <button type="button" id="mind_recover_button" onclick="add_mind(this, '망한머리 복구', '어떻게 복구하길 원하나요?')">
+                            #망한머리 복구
+                        </button>   
+                        <button type="button" id="mind_etc_button" onclick="add_mind(this, '기타', '심리적인 이유를 알려주세요')">
+                            #기타
+                        </button>  
+                        
+                        </div>
+                        
+                    </fieldset>
+                </div>
+            
+                <div class="needs_q" id="needs_q" >
+                    <fieldset class="needs_field" style="width:600">
+                        <legend><h4>이것 만큼은 꼭 해결하고 싶다!!</h4></legend>
+                        " 아래 해시태그 중 평소 신경쓰이는 <span style="color:crimson">#고민</span>, 미용 서비스에 대한 <span style="color:crimson">#불만</span>을 선택하고 <br> 자세한 내용을 입력해주세요 ! "<br>
+                        (* 없다면 비워두어도 좋습니다 !) <br><br>
+                        <div>
+                            <button type="button" id="needs_volume_button" onclick="add_needs(this, '뜨는/처지는 머리', '어디가 뜨나요/처지나요?')">
+                            #뜨는/처지는 머리
+                        </button>
+                        <button type="button" id="needs_remain_button" onclick="add_needs(this, '꼭 남겨주세요', '신체부위 기준으로 일려주세요')">
+                            #꼭 남겨주세요
+                        </button>
+                            <button type="button" id="needs_abandon_button" onclick="add_needs(this, '꼭 잘라주세요', '신체부위 기준으로 알려주세요')">
+                            #꼭 잘라주세요
+                        </button>
+                            
+                            <button type="button" id="needs_feeling_button" onclick="add_needs(this, '피하고픈 느낌', '스타일을 하나 지목해주세요')">
+                            #피하고픈 느낌
+                        </button>
+                            <button type="button" id="needs_service_button" onclick="add_needs(this, '서비스 부분', '조심해주었으면 하는 점?')">
+                            #서비스 부분
+                        </button>
+                            
+                            <button type="button" id="needs_hate_button" onclick="add_needs(this, '이전 스타일 불만족', '가장 불만스러운 부분?')">
+                            #이전 스타일 불만족
+                        </button>
+                            <button type="button" id="needs_recover_button" onclick="add_needs(this, '망한머리 복구', '가장 신경쓰이는 부분?')">
+                            #망한머리 복구
+                        </button>
+                            <button type="button" id="needs_etc_button" onclick="add_needs(this, '기타', '가장 큰 고민이나 불만을 알려주세요')">
+                            #기타
+                        </button>
+                        </div>
+                        
+                    </fieldset>
+                </div>
+            
+                <div class="fashion_q" id="fashion_q">
+                    <fieldset class="fashion_field">
+                        <legend><h4>평소 패션 스타일</h4></legend>
+                        " 평소 스타일과 가장 근접한 키워드 몇 개를 선택해 주세요 ! "<br><br>
+                        <div>
+                        <button type="button" id="fashion_classic_button" onclick="add_fashion(this, '클래식')">
+                            #클래식
+                        </button>
+                        <button type="button" id="fashion_casual_button" onclick="add_fashion(this, '캐주얼')">
+                            #캐주얼
+                        </button>
+                        <button type="button" id="fashion_street_button" onclick="add_fashion(this, '스트릿')">
+                            #스트릿
+                        </button>
+                        <button type="button" id="fashion_vintage_button" onclick="add_fashion(this, '빈티지')">
+                            #빈티지
+                        </button>
+                        <button type="button" id="fashion_modern_button" onclick="add_fashion(this, '모던')">
+                            #모던
+                        </button>
+                        <button type="button" id="fashion_feminine_button" onclick="add_fashion(this, '페미닌')">
+                            #페미닌
+                        </button>
+                        <button type="button" id="fashion_dandy_button" onclick="add_fashion(this, '댄디')">
+                            #댄디
+                        </button>
+                        <button type="button" id="fashion_minimalism_button" onclick="add_fashion(this, '미니멀리즘')">
+                            #미니멀리즘
+                        </button>
+                        <button type="button" id="fashion_maximalism_button" onclick="add_fashion(this, '맥시멀리즘')">
+                            #맥시멀리즘
+                        </button>
+                        <button type="button" id="fashion_americancasual_button" onclick="add_fashion(this, '아메카지')">
+                            #아메카지
+                        </button>
+                        <button type="button" id="fashion_layered_button" onclick="add_fashion(this, '레이어드')">
+                            #레이어드
+                        </button>
+                        <button type="button" id="fashion_sporty_button" onclick="add_fashion(this, '스포티')">
+                            #스포티
+                        </button>
+                        <button type="button" id="fashion_ethnic_button" onclick="add_fashion(this, '에스닉')">
+                            #에스닉
+                        </button>
+                        <button type="button" id="fashion_avantgarde_button" onclick="add_fashion(this, '아방가르드')">
+                            #아방가르드
+                        </button>
+                            <button type="button" id="fashion_techwear_button" onclick="add_fashion(this, '테크웨어')">
+                            #테크웨어
+                        </button>
+                        </div>
+                        
+                        
+                    </fieldset>
+                </div>
+               
+                    <fieldset >
+                        <legend><h4>평소 스타일링 습관</h4></legend>
+                        <select name="hairstyling_when" id="hairstyling_when">
+                            <option value="morning">아침</option>
+                            <option value="afternoon">오후</option>
+                            <option value="night">저녁</option>
+                        </select>
+                        <input type="text" name="hairstyling_practice" id="hairstyling_practice" placeholder="사용하는 제품과 연출방법" style="width:60%">
+                    </fieldset>
+                
+                <br />
+                <button type="button" class="back_button" onclick="back_page2()"> 다시입력 </button>
+                <button class="page_button" type="button" onclick="result_page('hairstyling_when', 'hairstyling_practice')"> 작성완료! </button>    
+            
+            </div>
+        
+        
+        
+        
+        <div class="result_form" id="result_form" style="width:600">
+        <h3 style="width:600">
+            Your Question!
+        </h3>
+        
+        <div class="headshape" id="headshape" >
+            <fieldset >
+            <legend><h4>두상</h4>  </legend>
+            <img id="front_img" src="" alt="#" style="width:200; height:200; float:left; margin:0 1%;">
+            <img id="profile_img" src="" alt="#" style="width:200; height:200; float:left; margin:0 1%;">
+            <div class="forehead" id="forehead" > 
+                <label > 이마넓이 : </label></div><br/>
+            <div class="hairline" id="hairline" >
+                <label > 헤어라인 : </label></div><br/>
+            <div class="top" id="top" >
+                <label > 두상각도 : </label></div><br/>
+            <div class="side" id="side" >
+                <label> 옆 통 수 : </label></div><br/>
+            <div class="back" id="back" >
+                <label > 뒤 통 수 : </label></div>        
+            </fieldset>
+       </div>
+        
+        <fieldset >
+            <legend> 모발 특징</legend>
+        <div class="hairamount" id="hairamount"  style="float:left; width:33%;">
+          <img id="amount_img" src="" alt="#" width="50" height="50"><label> 모량 : </label>      
+        </div>
+        
+        <div class="hairtype" id="hairtype"  style="float:left; width:33%;">
+           <img id="type_img" src="" alt="#" width="50" height="50"><label> 모질 : </label>     
+        </div>
+        
+        <div class="hairthickness" id="hairthickness"  style="float:left; width:33%;">
+            <img id="thickness_img" src="" alt="#" width="50" height="50"><label> 모발굵기 : </label>
+        </div>
+            </fieldset>
+        
+        <fieldset class="hairdamage_set" ><legend> <h4>추정 모발 손상도</h4></legend>  
+            <div >
+                <img id="damage_img" src="" alt="#" style="float:left; width:100; height:100;">
+                <div class="hairdamage" id="hairdamage" style="width:70%; margin-left: 15%; padding: 20;">
+                    <span> Lv. </span>                
+                </div> 
+        </div>
+        <div class="procedure" id="procedure">
+            <fieldset class="procedure_field" style="width:95%"><legend>시술내역</legend>
+            <div class="perm" id="perm"  ></div>
+            <div class="heatedperm" id="heatedperm"  ></div>
+            <div class="dying" id="dying"  ></div>
+            <div class="bleach" id="bleach" ></div>
+                </fieldset>
+        </div>
+        
+        <div class="haircare" id="haircare">
+            <fieldset style="width:95%"><legend>관리습관</legend>
+            <div class="countwash" id="countwash"><label >하루 동안 머리 감는 횟수 : </label></div>
+            <div class="washtime" id="washtime"><label >머리를 언제 감나요? : </label></div>
+            <div class="product" id="product"><label >사용하는 헤어 관리 제품 : </label></div>
+            <div class="tool" id="tool"><label >사용하는 스타일링 기구 : </label></div>
+            </fieldset>
+        </div>    
+             </fieldset>
+        
+        
+   <fieldset class="mind_set" id="mind_set">  <legend><h4>제 속마음은요!!</h4></legend> 
+       <div class="needs" id="needs">
+            <label>고민 태그</label><br>
+        </div>   <br>   
+       
+       <div class="mind" id="mind">                   
+            <label>심리 태그</label><br>
+        </div>
+       
+        
+       
+        <br/><div class="B/A" id="B/A">
+            <fieldset style="width:43%; float:left; margin-left:1%;"><legend>Before</legend>
+            <img class="before_img" id="before_img" src="" width="200" height="200">
+            </fieldset>
+       
+            <fieldset style="width:43%; float:left; margin-left:1%;"><legend>After</legend>
+                <img class="after_img" id="after_img" src="" width="200" height="200">
+            </fieldset>
+        </div>
+       
+   <fieldset style="width:95%"><legend>평소 옷차림</legend>
+        <div class="fashion" id="fashion">
+
+        </div>
+   </fieldset>
+       
+        <div class="hairstyling" id="hairstyling">
+            <fieldset style="width:95%"><legend>평소 스타일링 습관</legend>
+            <div class="when" id="when"  style="float:left"></div>
+            <div class="practice" id="practice"></div>
+            </fieldset>
+        </div>
+</fieldset>
+</div>
+   </form>    
+        
+        <div class="warning">
+            이 앱은 대략적인 특징과 니즈를 통해 스타일 제안에 도움을 주는 것이 목적입니다. <br>
+            비대면 방식의 한계로 실제 미용실 방문 결과와 다를 수 있으니 주의해 주시고, <br>
+            본인의 상황에 맞는 디자이너의 고유한 해결책으로서 스타일 제안을 확인해 주세요!
+        </div>
+        
+        <button class="screenshot_button" type="button" onclick="screenshot()">
+            png로 저장하고 상담하러 가기!
+        </button>
+        
+
+        <div class="ad-banner">
+            <ins class="kakao_ad_area" style="display:none;" 
+                data-ad-unit    = "DAN-rhugxiyqrxb6" 
+                data-ad-width   = "728" 
+                data-ad-height  = "90"></ins> 
+            <script type="text/javascript" src="//t1.daumcdn.net/kas/static/ba.min.js" async></script>
+        </div>
+        
+        <footer>
+            https://charttalk.imweb.me/
+            <br>
+            insta: @charttalk
+            <br>
+            kakao : @charttalk
+            <br><br>
+            ⓒ 찰떡 All rights reserved.
+        </footer>
+        
+       <script>
+           
+            $('.result_form').hide();
+            $('.warning').hide();
+            $('.screenshot_button').hide();
+            $('.before_content').hide();
+            $('.after_content').hide();
+           
+        /////////////////////////////////// page 3//////////////////////////////////////
+           
+            function el(id){
+           return document.getElementById(id)      
+          }
+          
+          function check(str){
+                    if(typeof str == "undefined" || str == null || str == "")
+                        return false;
+                    else
+                        return true ;
+                } 
+           
+            //upload image
+            function readBefore(x){
+                if(x.files && x.files[0]){
+                    var reader = new FileReader();
+                    reader.onload = function(y){
+                        $('.before_upload').hide();
+                        $('.before_img').attr('src', y.target.result);
+                        $('.before_content').show();
+                    }
+                    reader.readAsDataURL(x.files[0])
+                    
+                }else{
+                    removeBefore();
+                }
+            }
+            
+            function removeBefore(){
+                $('.before_content').replaceWith($('.before_content').clone());
+                $('.before_content').hide();
+                $('.before_upload').show();
+            }
+            
+            function readAfter(x){
+                if(x.files && x.files[0]){
+                    var reader = new FileReader();
+                    reader.onload = function(y){
+                        $('.after_upload').hide();
+                        $('.after_img').attr('src', y.target.result);
+                        $('.after_content').show();                       
+                    }
+                    reader.readAsDataURL(x.files[0])                    
+                }else{
+                    removeAfter();
+                }
+            }
+            
+            function removeAfter(){
+                $('.after_content').replaceWith($('.after_content').clone());
+                $('.after_content').hide();
+                $('.after_upload').show();
+            }
+            
+                
+            //심리적 이유
+            
+            function add_mind(e,text, placeholder){
+                //선택화면
+                var tail = e.id.split('_button')[0];
+                var mind_label = document.createTextNode('#' + text)
+                mind_label.id = 'mind_label';
+                var p = document.createElement('p')
+                p.id= tail+'_tag'
+                var mind_input = document.createElement('input')
+                mind_input.type="text";
+                mind_input.id= tail + '_input'
+                mind_input.placeholder = placeholder
+                $('.mind_field').append(p);
+                el(tail+'_tag').append(mind_label);
+                el(tail+'_tag').append(mind_input);
+                $('#' + tail + '_button').hide();
+                
+                //결과화면
+                var mindHTML = document.createElement('span')
+                mindHTML.id = tail + '_HTML'
+                el('mind').append(mindHTML)
+                el(tail+'_HTML').innerHTML = '<span width="100" style="font-weight:bold; color:dodgerblue;">#' + text + '</span> &nbsp'
+                
+                
+                //undo
+                var return_button = document.createElement('button');
+                return_button.type="button";
+                return_button.id= tail + "_return";
+                return_button.innerHTML = '&nbsp x &nbsp'
+                return_button.onclick = function(){
+                    $('#'+tail+'_tag').remove();
+                    $('#'+tail+'_HTML').remove();
+                    $('#' + tail + '_button').show();
+                }
+                $('#'+tail+'_tag').append(return_button);
+            }
+           
+           //이것만큼은 꼭 해결하고 싶다
+            
+            function add_needs(e,text, placeholder){
+                //선택화면
+                var tail = e.id.split('_button')[0];
+                var needs_label = document.createTextNode('#' + text)
+                needs_label.id = 'needs_label';
+                var p = document.createElement('p')
+                p.id= tail+'_tag'
+                var needs_input = document.createElement('input')
+                needs_input.type="text";
+                needs_input.id= tail + '_input'
+                needs_input.placeholder = placeholder
+                $('.needs_field').append(p);
+                el(tail+'_tag').append(needs_label);
+                el(tail+'_tag').append(needs_input);
+                $('#' + tail + '_button').hide();
+                
+                //결과화면
+                var needsHTML = document.createElement('span')
+                needsHTML.id = tail + '_HTML'
+                el('needs').append(needsHTML)
+                el(tail+'_HTML').innerHTML = '<span width="100" style="font-weight:bold; color:crimson;">#' + text + '</span> &nbsp'
+                
+                
+                //undo
+                var return_button = document.createElement('button');
+                return_button.type="button";
+                return_button.id= tail + "_return";
+                return_button.innerHTML = '&nbsp x &nbsp'
+                return_button.onclick = function(){
+                    $('#'+tail+'_tag').remove();
+                    $('#'+tail+'_HTML').remove();
+                    $('#' + tail + '_button').show();
+                }
+                $('#'+tail+'_tag').append(return_button);
+            }
+           
+           
+            //fashion style
+           function add_fashion(e,text){
+               //선택화면
+               var tail = e.id.split('_button')[0];
+                var fashion_label = document.createTextNode('#' + text)
+                fashion_label.id = 'fashion_label';
+                var p = document.createElement('span')
+                p.id= tail+'_tag'
+                $('.fashion_field').append(p);
+                el(tail+'_tag').append(fashion_label);
+                 $('#' + tail + '_button').hide();
+               
+               //결과화면
+               var fashionHTML = document.createElement('span')
+                fashionHTML.id = tail + '_HTML'
+                el('fashion').append(fashionHTML)
+                el(tail+'_HTML').innerHTML = '<span width="100" style="font-weight:bold; color:springgreen;">#</span>' + text + '&nbsp'
+               
+               //undo
+               var return_button = document.createElement('button');
+                return_button.type="button";
+                return_button.id= tail + "_return";
+                return_button.innerHTML = '&nbsp x &nbsp'
+                return_button.onclick = function(){
+                    $('#'+tail+'_tag').remove();
+                    $('#'+tail+'_HTML').remove();
+                    $('#' + tail + '_button').show();
+                }
+                $('#'+tail+'_tag').append(return_button);
+           }
+           
+           function back_page2(){
+                window.history.back();
+            }
+           
+           //submit
+           function result_page(x,y) {
+               // After 사진에서 구체적으로 원하는 부분 입력
+               el('B/A').innerHTML = el('B/A').innerHTML + '특히 <span style="color:	chocolate">' + el('BAimg_text').value + '</span> 을(를) 신경 써주세요 :)<br/><br/>'
+             
+               //hairstyling data applying
+                    if(el(x).value == 'morning'){
+                    var hairstyling = '아침'
+                }else if(el(x).value == 'afternoon'){
+                    var hairstyling = '오후'
+                }else if(el(x).value == 'night'){
+                    var hairstyling = '저녁'
+                }
+                el('when').innerHTML = '평소 <span style="color:dodgerblue">' + hairstyling + '</span> 에 '
+                el('practice').innerHTML = '&nbsp' + '<span style="color:dodgerblue">' + el(y).value + '</span> 하고 다녀요';
+               
+               //심리, 니즈 반영
+               mind_result()
+               needs_result()
+               
+               
+               //화면전환
+                $('.form3').hide();
+                $('.button2').hide();
+                $('.result_form').show();
+                $('.warning').show();
+                $('.screenshot_button').show();
+            }
+           
+           
+           // 심리적인 이유 input value 반영
+               function mind_result(){
+                   var texts = $('.mind_field').find('p')
+               var tail = []
+               for (i in texts){
+                   if(check(texts[i].id) == true){
+                       tail.push(texts[i].id.split('_tag')[0])
+                   }
+               }
+               for (i in tail){
+                   el(tail[i]+'_HTML').innerHTML = el(tail[i]+'_HTML').innerHTML + '" '+ el(tail[i]+'_input').value + ' "<br/>'
+               }
+               }
+               
+               
+               // 이것만큼은 꼭 해결하고 싶다 input value 반영
+               function needs_result(){
+                   var texts = $('.needs_field').find('p')
+               var tail = []
+               for (i in texts){
+                   if(check(texts[i].id) == true){
+                       tail.push(texts[i].id.split('_tag')[0])
+                   }
+               }
+               for (i in tail){
+                   el(tail[i]+'_HTML').innerHTML = el(tail[i]+'_HTML').innerHTML + '" '+ el(tail[i]+'_input').value + ' "<br/>'
+               }    
+               }
+           
+           /////////////////////////////////// result page//////////////////////////////////////  
+        
+        // 모발손상도 도출 위한 기본 변수 설정
+           //시술
+               var perm_number = 0
+               var heatedperm_number = 0
+               var dying_number = 0
+               var bleach_number = 0
+               var digitalperm_number = 0
+               var downperm_number = 0
+               var magicperm_number = 0
+               
+           //제품
+               var rinse=0
+               var treatment=0
+               var essence=0
+               var hairoil=0
+               var hairpack=0
+               
+           //기구
+               var dryer=0
+               var iron=0
+           
+           
+        // form data get
+        var data = window.location.search
+        var split = data.split('&')
+           
+           
+        
+           
+           //쪼개서 넣을 어레이 만들기
+        var headshape_ = []    
+        var hairamount_ = []
+        var hairtype_ = []
+        var hairthickness_ = []
+        var procedure_ = []
+        var hairdamage_ = []
+        var haircare_ = []      
+    
+               
+         //쪼개서 어레이에 넣기  
+         for (i in split){
+               if(split[i].indexOf('headshape_') != -1){
+                   headshape_.push(split[i].split('headshape')[1])
+               }else if(split[i].indexOf('hairamount_') != -1){
+                   hairamount_.push(split[i].split('hairamount')[1])      
+               }else if(split[i].indexOf('hairtype_') != -1){
+                   hairtype_.push(split[i].split('hairtype')[1])      
+               }else if(split[i].indexOf('hairthickness_') != -1){
+                   hairthickness_.push(split[i].split('hairthickness')[1])      
+               }else if(split[i].indexOf('procedure_') != -1){
+                   procedure_.push(split[i].split('procedure')[1])      
+               }else if(split[i].indexOf('hairdamage_') != -1){
+                   hairdamage_.push(split[i].split('hairdamage')[1])     
+               }else if(split[i].indexOf('haircare_') != -1){
+                   haircare_.push(split[i].split('haircare')[1])      
+               }
+           }  
+           
+           //div tag에 차례대로 갖다 박기 (range는 무조건 value 가짐 / button+text, check, text, number 는 입력한 경우만)
+           // 두상
+           if(headshape_[0].split('=')[1] == 0){
+               var forehead = '좁음'
+           }else if(headshape_[0].split('=')[1] == 1){
+               var forehead = '보통'
+           }else{
+               var forehead = '넓음'
+           }
+           el('forehead').innerHTML = el('forehead').innerHTML + forehead;
+           
+           if(headshape_[1].split('=')[1] == 0){
+               var hairline = '둥근이마'
+           }else if(headshape_[1].split('=')[1] == 1){
+               var hairline = '일자이마'
+           }else{
+               var hairline = 'M자이마'
+           }
+           el('hairline').innerHTML = el('hairline').innerHTML + hairline;
+           
+           if(headshape_[2].split('=')[1] == 0){
+               var top_angle = '이마 높음'
+           }else if(headshape_[2].split('=')[1] == 1){
+               var top_angle = '수평'
+           }else{
+               var top_angle = '뒤통수 높음'
+           }
+           el('top').innerHTML = el('top').innerHTML + top_angle;
+           
+           if(headshape_[3].split('=')[1] == 0){
+               var side = '좁음'
+           }else if(headshape_[3].split('=')[1] == 1){
+               var side = '보통'
+           }else{
+               var side = '짱구'
+           }
+           el('side').innerHTML = el('side').innerHTML + side;
+           
+           if(headshape_[4].split('=')[1] == 0){
+               var back = '절벽'
+           }else if(headshape_[4].split('=')[1] == 1){
+               var back = '볼록'
+           }else{
+               var back = '짱구'
+           }
+           el('back').innerHTML = el('back').innerHTML + back;
+           
+           //두상 사진 박기
+           //정면
+           document.getElementById('front_img').src = './img/front/' + headshape_[0].split('=')[1] + headshape_[1].split('=')[1] + headshape_[3].split('=')[1] + '.jpg';
+           //측면
+           document.getElementById('profile_img').src = './img/profile/' + headshape_[0].split('=')[1] + headshape_[1].split('=')[1] + headshape_[2].split('=')[1] + headshape_[4].split('=')[1] + '.jpg';
+           
+           //모량
+           if(hairamount_[0].split('=')[1] == 0){
+                el('hairamount').innerHTML =  el('hairamount').innerHTML + '적음'
+           }else if(hairamount_[0].split('=')[1] == 1){
+                el('hairamount').innerHTML =  el('hairamount').innerHTML + '보통'
+           }else if(hairamount_[0].split('=')[1] == 2){
+                el('hairamount').innerHTML =  el('hairamount').innerHTML + '많음'
+           }
+           
+           
+           if(hairamount_[0].split('=')[1] == 0){
+               document.getElementById('amount_img').src = './img/hairamount/0.png';    
+           }else if(hairamount_[0].split('=')[1] == 1){
+               document.getElementById('amount_img').src = './img/hairamount/1.png';    
+           }else{
+               document.getElementById('amount_img').src = './img/hairamount/2.png';    
+           }
+           
+           
+           //모질
+           if(hairtype_[0].split('=')[1] == 0){
+               var hairtype = '직모'
+               document.getElementById('type_img').src = './img/hairtype/0.png';
+           }else if(hairtype_[0].split('=')[1] == 1){
+               var hairtype = '반곱슬'
+               document.getElementById('type_img').src = './img/hairtype/1.png';
+           }else{
+               var hairtype = '곱슬'
+               document.getElementById('type_img').src = './img/hairtype/2.png';
+           }
+           el('hairtype').innerHTML = el('hairtype').innerHTML + hairtype;
+           
+           
+           //모발굵기
+           if(hairthickness_[0].split('=')[1] == 0){
+               var hairthickness = '극세사'
+           }else if(hairthickness_[0].split('=')[1] == 1){
+               var hairthickness = '얇음'
+           }else if(hairthickness_[0].split('=')[1] == 2){
+               var hairthickness = '보통'
+           }else if(hairthickness_[0].split('=')[1] == 3){
+               var hairthickness = '굵음'
+           }else{
+               var hairthickness = '밧줄'
+           }
+           el('hairthickness').innerHTML = el('hairthickness').innerHTML + hairthickness;
+           
+           document.getElementById('thickness_img').src = './img/hairthickness/' + hairthickness_[0].split('=')[1] + '.png'
+           
+           //시술내역
+           for (i in procedure_){
+               if (procedure_[i].indexOf('_perm') != -1){
+                   var perm = procedure_[i].split('=')[1]
+                   var perm_number = perm*1
+                   var perm_tag = document.createElement('div')
+                   perm_tag.id='perm'
+                   $('.procedure_field').append(perm_tag)
+                   el('perm').innerHTML = "&nbsp&nbsp<label>#일반펌 : </label>" + perm  + "<label>회 </label>" 
+               }else if(procedure_[i].indexOf('_heatedperm') != -1){
+                   var heatedperm = procedure_[i].split('=')[1]
+                   var heatedperm_number = heatedperm*1
+                   var heatedperm_tag = document.createElement('div')
+                   heatedperm_tag.id='heatedperm'
+                   $('.procedure_field').append(heatedperm_tag)
+                   el('heatedperm').innerHTML ="&nbsp&nbsp<label>#열펌 : </label>" +  heatedperm  + "<label>회 </label>" 
+               }else if (procedure_[i].indexOf('_dying') != -1){
+                   var dying = procedure_[i].split('=')[1]
+                   var dying_number = dying*1
+                   var dying_tag = document.createElement('div')
+                   dying_tag.id='dying'
+                   $('.procedure_field').append(dying_tag)
+                   el('dying').innerHTML = "&nbsp&nbsp<label>#염색 : </label>" + dying + "<label>회 </label>" 
+               }else if (procedure_[i].indexOf('_bleach') != -1){
+                   var bleach = procedure_[i].split('=')[1]
+                   var bleach_number = bleach*1
+                   var bleach_tag = document.createElement('div')
+                   bleach_tag.id='bleach'
+                   $('.procedure_field').append(bleach_tag)
+                   el('bleach').innerHTML = "&nbsp&nbsp<label>#탈색 : </label>" + bleach + "<label>회 </label>" 
+               }else if (procedure_[i].indexOf('_downperm') != -1){
+                   var downperm = procedure_[i].split('=')[1]
+                   var downperm_number = downperm*1
+                   var downperm_tag = document.createElement('div')
+                   downperm_tag.id='downperm'
+                   $('.procedure_field').append(downperm_tag)
+                   el('downperm').innerHTML = "&nbsp&nbsp<label>#다운펌 : </label>" + downperm + "<label>회 </label>" 
+               }else if (procedure_[i].indexOf('_digitalperm') != -1){
+                   var digitalperm = procedure_[i].split('=')[1]
+                   var digitalperm_number = digitalperm*1
+                   var digitalperm_tag = document.createElement('div')
+                   digitalperm_tag.id='digitalperm'
+                   $('.procedure_field').append(digitalperm_tag)
+                   el('digitalperm').innerHTML = "&nbsp&nbsp<label>#디지털펌 : </label>" + digitalperm + "<label>회 </label>" 
+               }else if (procedure_[i].indexOf('_magicperm') != -1){
+                   var magicperm = procedure_[i].split('=')[1]
+                   var magicperm_number = magicperm*1
+                   var magicperm_tag = document.createElement('div')
+                   magicperm_tag.id='magicperm'
+                   $('.procedure_field').append(magicperm_tag)
+                   el('magicperm').innerHTML = "&nbsp&nbsp<label>#매직 : </label>" + magicperm + "<label>회 </label>" 
+               }
+           }
+           
+           //관리습관
+           
+           
+           for (i in haircare_){
+               if(haircare_[i].indexOf('_countwash') != -1){
+                  el('countwash').innerHTML = el('countwash').innerHTML + '  #'+ haircare_[i].split('=')[1] + ' 회'
+               }else if(haircare_[i].indexOf('_washtime') != -1){
+                   if(haircare_[i].split('=')[1] == 'morning'){
+                       el('washtime').innerHTML = el('washtime').innerHTML + '  # 아침'
+                   }else if(haircare_[i].split('=')[1] == 'afternoon'){
+                       el('washtime').innerHTML = el('washtime').innerHTML + '  # 오후'
+                   }else if(haircare_[i].split('=')[1] == 'night'){
+                       el('washtime').innerHTML = el('washtime').innerHTML + '  # 저녁'
+                   }else {
+                       el('washtime').innerHTML = el('washtime').innerHTML + '  # 새벽'
+                   }
+              }else if(haircare_[i].indexOf('_product') != -1){
+                  if(haircare_[i].split('=')[1] == 'rinse'){
+                      var rinse = 1
+                       el('product').innerHTML = el('product').innerHTML + '  # 린스'
+                   }else if(haircare_[i].split('=')[1] == 'treatment'){
+                       var treatment = 1
+                       el('product').innerHTML = el('product').innerHTML + '  # 트리트먼트'
+                   }else if(haircare_[i].split('=')[1] == 'essence'){
+                       var essence = 1
+                       el('product').innerHTML = el('product').innerHTML + '  # 에센스'
+                   }else if(haircare_[i].split('=')[1] == 'hairoil'){
+                       var hairoil = 1
+                       el('product').innerHTML = el('product').innerHTML + '  # 헤어오일'
+                   }else if(haircare_[i].split('=')[1] == 'hairpack'){
+                       var hairpack = 1
+                       el('product').innerHTML = el('product').innerHTML + '  # 헤어팩'
+                   }
+              }else if(haircare_[i].indexOf('_tool') != -1){
+                  if(haircare_[i].split('=')[1] == 'dryer'){
+                      var dryer = 1
+                       el('tool').innerHTML = el('tool').innerHTML + '  # 헤어 드라이어'
+                   }else if(haircare_[i].split('=')[1] == 'iron'){
+                       var iron = 1
+                       el('tool').innerHTML = el('tool').innerHTML + '  # 고데기'
+                   }
+              } 
+            }
+           
+           //모발 손상도 도출
+             var hairdamage_rate = (10*perm_number + 15*heatedperm_number + 5*downperm_number + 10*digitalperm_number + + 15*magicperm_number + 10*dying_number + 20*bleach_number) - (5*rinse + 10*treatment + 10*essence + 20*hairoil + 30*hairpack) + (5*dryer + 15*iron)
+              if(hairdamage_rate > 100){
+                  var hairdamage_rate = 100
+              }else if(hairdamage_rate<0){
+                  var hairdamage_rate = 0};
+             var cuticle_lv = (100-hairdamage_rate)/12.5
+
+           el('hairdamage').innerHTML = el('hairdamage').innerHTML + '<label> 모발 손상도 : </label>' + '<span style="color:dodgerblue;">'+hairdamage_rate +' %</span>' +
+               '<br/><label> 잔여 큐티클 </label>'+ '<span style="color:dodgerblue;"> Lv. '+cuticle_lv + '</span> (으)로 추정됩니다.'
+           
+           if(hairdamage_rate > 80 ){
+               document.getElementById('damage_img').src = './img/hairdamage/worst.jpg'   
+              }else if(hairdamage_rate > 60){
+                  document.getElementById('damage_img').src = './img/hairdamage/worse.jpg'
+              }else if(hairdamage_rate > 40){
+                  document.getElementById('damage_img').src = './img/hairdamage/bad.jpg'
+              }else{
+                  document.getElementById('damage_img').src = './img/hairdamage/good.jpg'
+              }
+           
+           
+           
+           //screenshot function
+           function screenshot(){
+    html2canvas(document.body, {}).then(function (canvas) {     
+        saveAs(canvas.toDataURL(), '찰떡(ChartTalk)_질문.png');
+    });    
+}
+
+function saveAs(uri, filename) {
+	var link = document.createElement('a');
+	if (typeof link.download === 'string') {
+		link.href = uri;
+		link.download = filename;
+		document.body.appendChild(link);
+		link.click();
+		document.body.removeChild(link);
+	} else {
+		window.open(uri);
+	}
+    var weblink = document.createElement('a')
+    weblink.href = 'https://charttalk.imweb.me/designer'
+    weblink.click();
+}
+           
+         
+        </script>
+        
+    </body>
+</html>

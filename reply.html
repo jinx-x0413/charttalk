@@ -1,0 +1,508 @@
+<html>
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" /> 
+        <link rel="stylesheet" href="style.css" />
+        <script
+            class="jsbin"
+            src="https://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"
+        ></script>
+        <script src="html2canvas.min.js">
+        </script>
+    </head>
+    <body>
+        <div class="webpage">
+            <a  href="https://charttalk.imweb.me/">찰떡(ChartTalk) : 전문가와 인생헤어 찾기</a> <a href="https://instagram.com/charttalk">insta: @charttalk</a><br>
+        </div>
+      <div class="title" id="title">
+         <a class="home" href="reply.html">   Reply-Chart </a>
+          <a href="index.html">고객입니다 (질문하러 가기)</a>
+           <a class="cs_openkakao" href="https://open.kakao.com/o/gbWFvTxc">feedback (오픈채팅)</a>
+        </div>
+    <form action="">
+            
+        <div class="answer_form">
+            <h2 width="600;">디자인은 예술이다!</h2>
+            <div class="style_abstract">
+                <fieldset style="width:600;">
+                    <legend><h4>STEP.1 솔루션 요약</h4></legend>
+                    제안하고자 하는 스타일을 요약해 주세요 : <input type="text" id="abstract_input"> <br>
+                    (* 제안하는 스타일을 잘 나타내는 사진을 첨부해 주시면 결정에 도움이 됩니다!) <br><br>
+                    <fieldset style="width:95%">
+                    <input type="file" class="abstract_upload" onchange="readimg(this)" accept="image/*">
+                    <div class="abstract_content" style="width:95%;">
+                        <img class="abstract_img" src="" width="200" height="200" style="margin-left:33%;"><br>
+                        <button class="abstract_change" style="width:200; margin-left:33%;" type="button" onclick="removeimg()">다른 사진 업로드</button>
+                    </div>
+                    </fieldset>
+                    <br>* 이 스타일을 제안하는 이유를 간략히 설명해주세요!
+                    <input type="text" id="abstract_explain" style="width:95%;">
+                        
+                </fieldset>
+            </div>
+            
+            <div class="style_needs">
+                <fieldset style="width:600;">
+                    <legend><h4>STEP.2 고민태그</h4></legend>
+                    고객이 해시태그한 <span style="color:crimson">#고민</span>을 선택하여, <br> 해결 방법을 알려 주시면 결정에 도움이 됩니다! <br><br>
+                    <div class="needs_field">
+                       <button type="button" id="needs_volume_button" onclick="add_needs(this, '뜨는/처지는 머리')">
+                            #뜨는/처지는 머리
+                        </button>
+                        <button type="button" id="needs_remain_button" onclick="add_needs(this, '꼭 남겨주세요')">
+                            #꼭 남겨주세요
+                        </button>
+                            <button type="button" id="needs_abandon_button" onclick="add_needs(this, '꼭 잘라주세요')">
+                            #꼭 잘라주세요
+                        </button>
+                            
+                            <button type="button" id="needs_feeling_button" onclick="add_needs(this, '피하고픈 느낌')">
+                            #피하고픈 느낌
+                        </button>
+                            <button type="button" id="needs_service_button" onclick="add_needs(this, '서비스 부분')">
+                            #서비스 부분
+                        </button>
+                            
+                            <button type="button" id="needs_hate_button" onclick="add_needs(this, '이전 스타일 불만족')">
+                            #이전 스타일 불만족
+                        </button>
+                            <button type="button" id="needs_recover_button" onclick="add_needs(this, '망한머리 복구')">
+                            #망한머리 복구
+                        </button>
+                        <button type="button" id="needs_etc_button" onclick="add_needs(this, '기타')">
+                            #기타
+                        </button>
+                    </div><br>
+                    
+                   <fieldset style="width:95%;">
+                        <legend>관리방법</legend>
+                       <input type="text" id="needs_knowhow_input" style="width:95%" placeholder="제품 사용법, 적정 시술 주기, 관리 습관 등">   
+                   </fieldset>
+                    
+                </fieldset>
+            </div>
+            
+            <div class="style_mind">
+                <fieldset style="width:600;">
+                    <legend><h4>STEP.3 심리태그</h4></legend>
+                    고객이 해시태그한 <span style="color:dodgerblue">#심리적 이유</span>를 선택하여, <br> 접근 방법을 알려 주시면 결정에 도움이 됩니다! <br><br>
+                    <div class="mind_field">
+                        <button type="button" id="mind_recommend_button" onclick="add_mind(this, '주변의 추천')">
+                            #주변의 추천
+                        </button>
+                        <button type="button" id="mind_fit_button" onclick="add_mind(this, '잘 어울림')">
+                            #잘 어울림
+                        </button>
+                        <button type="button" id="mind_attempt_button" onclick="add_mind(this, '새로운 시도')">
+                            #새로운 시도
+                        </button>
+                        <button type="button" id="mind_image_button" onclick="add_mind(this, '이미지 변신')">
+                            #이미지 변신
+                        </button>
+                        <button type="button" id="mind_pretty_button" onclick="add_mind(this, '예쁜/멋진 스타일')">
+                            #예쁜/멋진 스타일
+                        </button>    
+                            <button type="button" id="mind_complex_button" onclick="add_mind(this, '컴플렉스 커버')">
+                            #컴플렉스 커버
+                        </button>
+                        <button type="button" id="mind_care_button" onclick="add_mind(this, '간편한 관리')">
+                            #간편한 관리
+                        </button>
+                        <button type="button" id="mind_styling_button" onclick="add_mind(this, '간편한 스타일링')">
+                            #간편한 스타일링
+                        </button>
+                        
+                        <button type="button" id="mind_identity_button" onclick="add_mind(this, '나를 잘 표현')">
+                            #나를 잘 표현
+                        </button>
+                        <button type="button" id="mind_job_button" onclick="add_mind(this, '직업과 관련')">
+                            #직업과 관련
+                        </button>
+                        <button type="button" id="mind_recover_button" onclick="add_mind(this, '망한머리 복구')">
+                            #망한머리 복구
+                        </button>  
+                        <button type="button" id="mind_etc_button" onclick="add_mind(this, '기타')">
+                            #기타
+                        </button>  
+                    </div><br>
+                    
+                    <fieldset style="width:95%;">
+                        <legend>스타일링 방법</legend>
+                        <input type="text" id="mind_knowhow_input" style="width:95%;" placeholder="평소 옷차림을 고려하면 결정에 많은 도움이 됩니다!">    
+                    </fieldset>
+                    
+                </fieldset>
+            </div>
+            
+            <div class="style_bill">
+                <fieldset style="width:600;">
+                    <legend><h4>STEP.4 예상견적</h4></legend>
+                    부분/중복시술의 경우 총 가격을 기준으로 입력해 주세요! <br><br>
+                    예시) 다운펌 20,000원+셋팅펌 100,000원+염색 2회 각 30,000원+탈색 30,000 원 <br>
+                    = 펌 120,000원 + 염색 60,000원 + 탈색 30,000원 <br><br>
+                    <div class="bill_field">
+                    <button type="button" id="bill_cut_button" onclick="add_bill(this, '커트')">커트 추가</button>
+                    <button type="button" id="bill_perm_button" onclick="add_bill(this, '펌')">펌 추가</button>
+                    <button type="button" id="bill_dying_button" onclick="add_bill(this, '염색(탈색)')">염색(탈색) 추가</button>
+                    <button type="button" id="bill_clinic_button" onclick="add_bill(this, '클리닉')">클리닉 추가</button>
+                    <button type="button" id="bill_styling_button" onclick="add_bill(this, '스타일링')">스타일링(드라이) 추가</button>
+                    
+                    </div><br>
+                    
+                    총 예상 소요시간 : <input type="number" id="bill_time"> 분
+                    
+                </fieldset>
+            </div>
+            
+            <button type="button" class="page_button" onclick="result_page()">
+                작성완료
+            </button>
+        </div>
+        
+        <div class="result_form">
+            <h3 style="width:600;">
+            Your Answer!
+            </h3>
+        
+        <div class="result_abstract" id="result_abstract" >
+            <fieldset style="width:600;">
+            <legend><h4>STEP1. 요약</h4>  </legend>
+                고객님에게 " <span id="abstract_input_text" style="color:dodgerblue"></span> " 를 제안해 드립니다 ! <br><br>
+                
+                <img class="abstract_img" src="" width="200" height="200" style="margin-left:33%;"><br>
+                고객님에게 " <span id="abstract_explain_text" style="color:chocolate"></span> " 이(가) 필요해 보입니다
+            </fieldset>
+       </div>
+        
+        <div class="result_needs" id="result_needs">
+            <fieldset style="width:600;">
+                <legend><h4>STEP2. 고민해결</h4></legend>
+                <fieldset class="needs" id="needs" style="width:95%;">
+                    <legend>고민사항 : 해결방안    </legend>
+                </fieldset>
+                <fieldset class="needs_knowhow" id="needs_knowhow" style="width:95%;">
+                    <legend>관리방법</legend>
+                </fieldset>
+                
+            </fieldset>
+        </div>
+        
+        <div class="result_mind" id="result_mind">
+            <fieldset style="width:600;">
+                <legend><h4>STEP3. 더 예쁘게/멋지게</h4></legend>
+                <fieldset class="mind" id="mind" style="width:95%;">
+                    <legend>심리적 이유 : 접근방법 </legend>
+                </fieldset>
+                <fieldset class="mind_knowhow" id="mind_knowhow" style="width:95%;">
+                    <legend>스타일링방법</legend>
+                </fieldset>
+            </fieldset>
+        </div>
+        
+            
+        <div class="result_bill" id="result_bill">
+            <fieldset style="width:600;">
+                <legend><h4>STEP4. 예상견적</h4></legend>
+                <div class="bill" id="bill" >
+                    <span>총 가격 : </span>
+                </div>
+                <div class="time" id="time">
+                    
+                </div>
+            </fieldset>
+        </div>
+    </div>
+        </form>
+        
+        <div class="warning">
+            이 앱은 대략적인 특징과 니즈를 통해 스타일 제안에 도움을 주는 것이 목적입니다. <br>
+            비대면 방식의 한계로 실제 미용실 방문 결과와 다를 수 있으니 주의해 주시고, <br>
+            본인의 상황에 맞는 디자이너의 고유한 해결책으로서 스타일 제안을 확인해 주세요!
+        </div>
+        
+        <button class="screenshot_button" type="button" onclick="screenshot()">
+            png로 저장하기!
+        </button>
+        
+        <div class="ad-banner">
+            <ins class="kakao_ad_area" style="display:none;" 
+                data-ad-unit    = "DAN-rhugxiyqrxb6" 
+                data-ad-width   = "728" 
+                data-ad-height  = "90"></ins> 
+            <script type="text/javascript" src="//t1.daumcdn.net/kas/static/ba.min.js" async></script>
+        </div>
+        
+        <footer>
+            https://charttalk.imweb.me/
+            <br>
+            insta: @charttalk
+            <br>
+            kakao : @charttalk
+            <br><br>
+            ⓒ 찰떡 All rights reserved.
+        </footer>
+
+        <script>
+        //default
+        $('.result_form').hide()
+        $('.abstract_content').hide()
+        $('.warning').hide();
+        $('.screenshot_button').hide();
+        
+        //기본기능
+        function el(id){
+            return document.getElementById(id)
+        }    
+        
+        function cl(tag){
+            return document.createElement(tag)
+        }
+            
+        function check(str){
+                if(typeof str == "undefined" || str == null || str == "")
+                    return false;
+                else
+                    return true ;
+            } 
+        
+        ///////////////////////////////////page 1///////////////////////////////////////    
+        //STEP 1
+            function readimg(x){
+                if(x.files && x.files[0]){
+                    var reader = new FileReader();
+                    reader.onload = function(y){
+                        $('.abstract_upload').hide();
+                        $('.abstract_img').attr('src', y.target.result);
+                        $('.abstract_content').show();
+                    }
+                    reader.readAsDataURL(x.files[0])
+                    
+                }else{
+                    removeimg();
+                }
+            }
+            
+            function removeimg(){
+                $('.abstract_content').replaceWith($('.abstract_content').clone());
+                $('.abstract_content').hide();
+                $('.abstract_upload').show();
+            }
+            
+        //STEP 2    
+        function add_needs(e,text){
+            //선택화면
+                var tail = e.id.split('_button')[0];
+                var needs_label = document.createTextNode('#' + text)
+                needs_label.id = 'needs_label';
+                var p = cl('p')
+                p.id= tail+'_tag'
+                var needs_input = cl('input')
+                needs_input.type="text";
+                needs_input.id= tail + '_input'
+                needs_input.style= "width:60%;"
+                needs_input.placeholder = "디자인에 어떻게 반영될지 알려주면 결정에 도움이 됩니다!"
+                $('.needs_field').append(p);
+                p.append(needs_label);
+                p.append(needs_input);
+                $('#' + tail + '_button').hide();
+                
+                //결과화면
+                var needsHTML = cl('span')
+                needsHTML.id = tail + '_HTML'
+                el('needs').append(needsHTML)
+                el(tail+'_HTML').innerHTML = '<span width="100" style="font-weight:bold; color:crimson;">#' + text + '</span> &nbsp'
+                
+                
+                //undo
+                var return_button = cl('button');
+                return_button.type="button";
+                return_button.id= tail + "_return";
+                return_button.innerHTML = '&nbsp x &nbsp'
+                return_button.onclick = function(){
+                    $('#'+tail+'_tag').remove();
+                    $('#'+tail+'_HTML').remove();
+                    $('#'+tail+'_return').hide();
+                    $('#' + tail + '_button').show();
+                }
+                $('#'+tail+'_tag').append(return_button);
+        }
+        
+        //STEP 3
+        function add_mind(e, text){
+            //선택화면
+                var tail = e.id.split('_button')[0];
+                var mind_label = document.createTextNode('#' + text)
+                mind_label.id = 'mind_label';
+                var p = cl('p')
+                p.id= tail+'_tag'
+                var mind_input = cl('input')
+                mind_input.type="text";
+                mind_input.id= tail + '_input'
+                mind_input.style="width:60%;"
+                mind_input.placeholder = "어떤 방법으로 연출할지 알려주면 결정에 도움이 됩니다!"
+                $('.mind_field').append(p);
+                p.append(mind_label);
+                p.append(mind_input);
+                $('#' + tail + '_button').hide();
+                
+                //결과화면
+                var mindHTML = cl('span')
+                mindHTML.id = tail + '_HTML'
+                el('mind').append(mindHTML)
+                el(tail+'_HTML').innerHTML = '<span width="100" style="font-weight:bold; color:dodgerblue;">#'+ text + '</span> &nbsp'
+                
+                
+                //undo
+                var return_button = cl('button');
+                return_button.type="button";
+                return_button.id= tail + "_return";
+                return_button.innerHTML = '&nbsp x &nbsp'
+                return_button.onclick = function(){
+                    $('#'+tail+'_tag').remove();
+                    $('#'+tail+'_HTML').remove();
+                    $('#'+tail+'_return').hide();
+                    $('#' + tail + '_button').show();
+                }
+                $('#'+tail+'_tag').append(return_button);
+        }
+        
+        
+        //STEP 4
+        
+        function add_bill(e, text){
+            var tail = e.id.split('_button')[0];
+            var bill_label = document.createTextNode('#' + text)
+                bill_label.id = 'bill_label';
+            var p = cl('p')
+                p.id= tail+'_tag'
+                p.class=tail
+                p.append(bill_label)
+            $('#' + tail + '_button').hide();
+            
+            //상품종류
+            if (tail != 'bill_cut' && tail != 'bill_styling'){
+                var bill_input = cl('input')
+                bill_input.type="text";
+                bill_input.id= tail + '_input'
+                bill_input.style="width:30%;"
+                bill_input.placeholder="상품 종류를 입력해주세요"
+                p.append(bill_input)
+                
+            }
+            //가격
+            p.innerHTML = p.innerHTML + '&nbsp (가격 : '
+            var bill_pay = cl('input')
+            bill_pay.type="number"
+            bill_pay.id= tail+ '_pay'
+            p.append(bill_pay)
+            p.innerHTML = p.innerHTML + '원 )'
+            
+             //undo
+                var return_button = cl('button');
+                return_button.type="button";
+                return_button.id= tail + "_return";
+                return_button.innerHTML = '&nbsp x &nbsp'
+                return_button.onclick = function(){
+                    $('#'+tail+'_return').parent().remove();
+                    $('#'+tail+'_HTML').remove();
+                    $('#' + tail + '_button').show();
+                }
+                p.append(return_button);
+            
+            $('.bill_field').append(p);
+        }
+            
+        //submit
+        function result_page(){
+            //텍스트 반영
+            el('abstract_input_text').innerHTML = el('abstract_input').value
+            el('abstract_explain_text').innerHTML = el('abstract_explain').value
+            
+            //심리,니즈,가격 반영
+            mind_result()
+            needs_result()
+            bill_result()
+            
+            //화면전환
+            $('.answer_form').hide()
+            $('.result_form').show()
+            $('.warning').show();
+            $('.screenshot_button').show(); 
+        }   
+            
+        // mind input value 반영
+               function mind_result(){
+                   var texts = $('.mind_field').find('p')
+               var tail = []
+               for (i in texts){
+                   if(check(texts[i].id) == true){
+                       tail.push(texts[i].id.split('_tag')[0])
+                   }
+               }
+               for (i in tail){
+                   el(tail[i]+'_HTML').innerHTML = el(tail[i]+'_HTML').innerHTML + '" '+ el(tail[i]+'_input').value + ' "<br/>'
+               }
+                   
+                   el('mind_knowhow').innerHTML = el('mind_knowhow').innerHTML + el('mind_knowhow_input').value
+               }
+               
+               
+               // needs input value 반영
+               function needs_result(){
+                   var texts = $('.needs_field').find('p')
+               var tail = []
+               for (i in texts){
+                   if(check(texts[i].id) == true){
+                       tail.push(texts[i].id.split('_tag')[0])
+                   }
+               }
+               for (i in tail){
+                   el(tail[i]+'_HTML').innerHTML = el(tail[i]+'_HTML').innerHTML + '" '+ el(tail[i]+'_input').value + ' "<br/>'
+               }
+                   
+                   el('needs_knowhow').innerHTML = el('needs_knowhow').innerHTML + el('needs_knowhow_input').value
+               }
+            
+            
+                //bill input value 반영
+            function bill_result(){
+                var texts = $('.bill_field').find('input')
+                var tail = []
+                for (i in texts){
+                   if(check(texts[i].id) == true && texts[i].id.indexOf('_pay') != -1){
+                       tail.push(texts[i].id)
+                   }
+               }
+               var bill_final = 0
+               for (i in tail){
+                   bill_final = bill_final + el(tail[i]).value*1
+               }
+                              
+               el('bill').innerHTML = el('bill').innerHTML + bill_final + '원'
+               el('time').innerHTML = el('bill_time').value + ' 분 소요 예정입니다.'
+            }
+            
+            
+            ///////////////////////////////////result page///////////////////////////////////////    
+             //screenshot function
+           function screenshot(){
+                html2canvas(document.body, {}).then(function (canvas) {     
+                    saveAs(canvas.toDataURL(), '찰떡(ChartTalk)_답변.png');
+                });    
+            }
+
+            function saveAs(uri, filename) {
+                var link = document.createElement('a');
+                if (typeof link.download === 'string') {
+                    link.href = uri;
+                    link.download = filename;
+                    document.body.appendChild(link);
+                    link.click();
+                    document.body.removeChild(link);
+                } else {
+                    window.open(uri);
+                }
+            }
+        </script>
+        
+    </body>
+</html>
